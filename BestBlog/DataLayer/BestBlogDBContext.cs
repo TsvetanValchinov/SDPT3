@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
-    class BestBlogDBContext : DbContext
+     public class BestBlogDBContext : DbContext
     {
         public BestBlogDBContext()
         {
@@ -25,11 +25,9 @@ namespace DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=DESKTOP-JARQ3N6;Database=StanimirSofronov_30.05;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=DESKTOP-ADCBR92\SQLEXPRESS;Database=TsvetanValchinovRSPT3;Trusted_Connection=True;");
             }
         }
-
-
 
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments { get; set; }
