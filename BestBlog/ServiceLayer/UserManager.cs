@@ -5,15 +5,15 @@ using BusinessLayer;
 using DataLayer;
 using System.Linq;
 
-namespace ServiceLayer.Controllers
+namespace ServiceLayer
     {
     public class UserManager : IRepository<User, int>
         {
-        private UserContext _userRepository;
+        private UserContext _userContext;
 
         public UserManager(BestBlogDBContext context)
             {
-            _userRepository = new UserContext(context);
+            _userContext = new UserContext(context);
             }
 
         public void Create(User item)
@@ -22,7 +22,7 @@ namespace ServiceLayer.Controllers
                 {
                 if(ValidateUsername(item.Username))
                     {
-                    _userRepository.Create(item);
+                    _userContext.Create(item);
                     }
                 else
                     {
@@ -39,7 +39,7 @@ namespace ServiceLayer.Controllers
             {
             try
                 {
-                return _userRepository.Read(key);
+                return _userContext.Read(key);
                 }
             catch (Exception ex)
                 {
@@ -51,7 +51,7 @@ namespace ServiceLayer.Controllers
             {
             try
                 {
-                return _userRepository.Read(skip, take);
+                return _userContext.Read(skip, take);
                 }
             catch (Exception ex)
                 {
@@ -63,7 +63,7 @@ namespace ServiceLayer.Controllers
             {
             try
                 {
-                return _userRepository.ReadAll();
+                return _userContext.ReadAll();
                 }
             catch (Exception ex)
                 {
@@ -75,7 +75,7 @@ namespace ServiceLayer.Controllers
             {
             try
                 {
-                _userRepository.Update(item);
+                _userContext.Update(item);
                 }
             catch (Exception ex)
                 {
@@ -87,7 +87,7 @@ namespace ServiceLayer.Controllers
             {
             try
                 {
-                _userRepository.Delete(key);
+                _userContext.Delete(key);
                 }
             catch (Exception ex)
                 {
@@ -97,7 +97,7 @@ namespace ServiceLayer.Controllers
         // return TRUE if there is NO user with that username or FALSE if there is user with that username 
         protected bool ValidateUsername(string username)
             {
-            IEnumerable<User> users = _userRepository.ReadAll();
+            IEnumerable<User> users = _userContext.ReadAll();
             List<string> usernames = new List<string>();
             foreach(User user in users)
                 {
@@ -116,7 +116,7 @@ namespace ServiceLayer.Controllers
        
         public User CheckForUser(string username, string password)
             {
-            IEnumerable<User> users = _userRepository.ReadAll();
+            IEnumerable<User> users = _userContext.ReadAll();
             foreach (User user in users)
                 {
                 if(user.Username == username && user.Password == password)
@@ -129,7 +129,7 @@ namespace ServiceLayer.Controllers
 
         public bool CheckIfUsernameIsUsed(string username)
             {
-            IEnumerable<User> users = _userRepository.ReadAll();
+            IEnumerable<User> users = _userContext.ReadAll();
             foreach (User user in users)
                 {
                 if (user.Username == username)
@@ -142,7 +142,7 @@ namespace ServiceLayer.Controllers
 
         public User findUserByUsername(string username)
             {
-            IEnumerable<User> users = _userRepository.ReadAll();
+            IEnumerable<User> users = _userContext.ReadAll();
             foreach(User user in users)
                 {
                 if(user.Username == username)

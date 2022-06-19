@@ -13,7 +13,6 @@ namespace BusinessLayer
         public string Username { get; set; }
 
         [Required]
-
         public string Password { get; set; }
 
         public IEnumerable<Post> Posts { get; set; }// stores the posts of this user

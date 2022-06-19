@@ -4,22 +4,22 @@ using System.Text;
 using BusinessLayer;
 using DataLayer;
 
-namespace ServiceLayer.Controllers
+namespace ServiceLayer
 {
     public class CommentManager : IRepository<Comment, int>
     {
-        private CommentContext _commentRepository;
+        private CommentContext _commentContext;
 
         public CommentManager(BestBlogDBContext context)
         {
-            _commentRepository = new CommentContext(context);
+            _commentContext = new CommentContext(context);
         }
 
         public void Create(Comment item)
         {
             try
             {
-                _commentRepository.Create(item);
+                _commentContext.Create(item);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _commentRepository.Read(key);
+                return _commentContext.Read(key);
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _commentRepository.Read(skip, take);
+                return _commentContext.Read(skip, take);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _commentRepository.ReadAll();
+                return _commentContext.ReadAll();
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                _commentRepository.Update(item);
+                _commentContext.Update(item);
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                _commentRepository.Delete(key);
+                _commentContext.Delete(key);
             }
             catch (Exception ex)
             {

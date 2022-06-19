@@ -4,22 +4,22 @@ using System.Text;
 using BusinessLayer;
 using DataLayer;
 
-namespace ServiceLayer.Controllers
+namespace ServiceLayer
 {
     public class PostManager : IRepository<Post, int>
     {
-        private PostContext _postRepository;
+        private PostContext _postContext;
 
         public PostManager(BestBlogDBContext context)
         {
-            _postRepository = new PostContext(context);
+            _postContext = new PostContext(context);
         }
 
         public void Create(Post item)
         {
             try
             {
-                _postRepository.Create(item);
+                _postContext.Create(item);
             }
             catch (Exception ex)
             {
@@ -31,7 +31,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _postRepository.Read(key);
+                return _postContext.Read(key);
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _postRepository.Read(skip, take);
+                return _postContext.Read(skip, take);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                return _postRepository.ReadAll();
+                return _postContext.ReadAll();
             }
             catch (Exception ex)
             {
@@ -67,7 +67,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                _postRepository.Update(item);
+                _postContext.Update(item);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace ServiceLayer.Controllers
         {
             try
             {
-                _postRepository.Delete(key);
+                _postContext.Delete(key);
             }
             catch (Exception ex)
             {
