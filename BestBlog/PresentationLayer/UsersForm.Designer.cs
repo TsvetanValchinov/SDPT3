@@ -92,7 +92,7 @@ namespace PresentationLayer
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 29;
             this.dgvUsers.Size = new System.Drawing.Size(307, 204);
-            this.dgvUsers.TabIndex = 5;
+            this.dgvUsers.TabIndex = 6;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // CreateUserBtn
@@ -130,7 +130,7 @@ namespace PresentationLayer
             this.ExitBtn.Location = new System.Drawing.Point(12, 12);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(94, 29);
-            this.ExitBtn.TabIndex = 6;
+            this.ExitBtn.TabIndex = 7;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);

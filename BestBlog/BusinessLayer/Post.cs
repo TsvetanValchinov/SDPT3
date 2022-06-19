@@ -34,7 +34,7 @@ namespace BusinessLayer
 
         public Post(User user, string title)
         {
-            this.User = user;
+            this.UserID = user.ID;
             this.Title = title;
             this.Created_On = DateTime.Now;
         }
