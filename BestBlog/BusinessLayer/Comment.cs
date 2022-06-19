@@ -39,8 +39,8 @@ namespace BusinessLayer
         public Comment(string content, Post post, User user)
         {
             this.Content = content;
-            this.Post = post;
-            this.User = user;
+            this.PostID = post.ID;
+            this.UserID = user.ID;
             this.Created_On = DateTime.Now;
         }
     }

@@ -118,7 +118,6 @@ namespace PresentationLayer
                     MessageBox.Show("User created successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AddUserRow(user);
                     ClearData();
-                    UsernameTextBox.Focus();
                 }
             }
             catch (Exception ex)
